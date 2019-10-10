@@ -25,6 +25,7 @@ namespace PieShop
             services.AddMvc();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IPieRepository,PieRepository>();
+            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
         }
 
         //we register our Middleware components chained after one another. pipeline is created

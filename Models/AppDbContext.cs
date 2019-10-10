@@ -14,6 +14,7 @@ namespace PieShop.Models
 
         }
 
+        public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Pie> Pies { get; set; }
     }
 }
