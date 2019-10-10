@@ -26,7 +26,7 @@ namespace PieShop.Controllers
                 Title = "Welcome to Edwin Pie shop",
                 Pies = pies.ToList()
         };
-            return View(pies);
+            return View(homeviewmodel);
         }
     }
 }
