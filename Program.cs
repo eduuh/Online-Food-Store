@@ -12,6 +12,7 @@ namespace PieShop
 {
     public class Program
     {
+        // The entry point for our app
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
