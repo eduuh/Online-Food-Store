@@ -126,7 +126,7 @@ namespace PieShop.Models
 
                 new Pie {Id=18,Name ="Mixed Berry Pie",Price=11.75M,ShortDescription=@"Great Place to Try It: Achatz Handmade Pie Co. in suburban Detroit 
                 offers a mixed-berry pie that uses local Michigan berries.",LongDescription = @"Distinguishing Features: A little bit of this, a little bit of that; these pies usually include two or three of the following: blueberries, raspberries, blackberries, strawberries; if you’re in the upper Atlantic Canadian provinces, this might be called a “bumbleberry pie,” 
-                which is just delightful, isn’t it?",ImageUrl = "https://pie.com/mixedberrypie",ImageThumbnailUrl="https://mixedberrypie.thubnail", IsPieofTheWeek= true},
+                which is just delightful, isn’t it?",ImageUrl = "https://pie.com/mixedberrypie",ImageThumbnailUrl="../wwwroot/images/blackberrypie.jpg", IsPieofTheWeek= true},
 
 
 
