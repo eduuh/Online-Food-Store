@@ -1,8 +1,9 @@
 ﻿body {
+	color:black;
 	padding-top: 50px;
 	padding-bottom: 20px;
-	background-color: #DFDBE5;
-	background-image: url("/images/Pattern.svg");
+	background-color: black;
+	background-image: url("/images/pattern.jpg");
 	background-repeat: repeat;
 }
 
