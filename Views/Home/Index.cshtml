@@ -1,5 +1,4 @@
-﻿@model PieShop.ViewModels.HomeViewModel;
-
+﻿@model HomeViewModel;
 <h2>@Model.Title</h2>
 <div class="row">
 @foreach (var pie in Model.Pies)
@@ -8,8 +7,11 @@
 	<div class="card" style="width: 18rem;">
 		<img src="@pie.ImageThumbnailUrl" class="card-img-top" alt="@pie.Name" width="260" height="300" >
 		<div class="card-body">
-			<h3 class="card-title">@pie.Name</h3>
-			<p class="card-text text-center">@pie.ShortDescription</p>
+			<h3 class="card-title">
+		   <a asp-controller="Home" asp-action="Details" asp-route-id="@pie.Id">@pie.Name</a>
+			
+			</h3>
+			<p class="card-text  text-justify">@pie.ShortDescription</p>
 			<a href="#" class="btn btn-primary">View @pie.Name</a>
 		</div>
 	</div>
