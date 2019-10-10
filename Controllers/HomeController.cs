@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PieShop.Models;
+using PieShop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,17 @@ namespace PieShop.Controllers
         {
              _pieRepository = pieRepository;
         }
-   
+
         public IActionResult Index()
         {
-            return View();
+
+            var pies = _pieRepository.GetAllPies().OrderBy(p => p.Name);
+            var homeviewmodel = new HomeViewModel()
+            {
+                Title = "Welcome to Edwin Pie shop",
+                Pies = pies.ToList()
+        };
+            return View(homeviewmodel);
         }
     }
 }
