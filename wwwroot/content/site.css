@@ -1,12 +1,21 @@
 ﻿body {
+	color:black;
 	padding-top: 50px;
 	padding-bottom: 20px;
-	background-color: #DFDBE5;
-	background-image: url("/images/Pattern.svg");
-	background-repeat: repeat;
+	background-color: black;
+	background-image: url("/images/pattern.jpg");
+	background-repeat: repeat-x;
 }
 
 .body-content {
 	padding-left: 15px;
 	padding-right: 15px;
+} 
+
+form {
+	margin-top:50px;
 }
+
+
+
+

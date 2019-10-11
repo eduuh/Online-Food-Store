@@ -1,13 +1,27 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
 	<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="~/content/site.css"/>
 </head>
 <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				<li><a asp-controller="Home" asp-action="Index" class="navbar-brand">Edwin Pie Shop</a> </li>
+				<li><a asp-controller="Feedback" asp-action="Index">Feedback</a></li>
+				<li><a asp-controller="Account" asp-action="Register">Register</a></li>
+				<li><a asp-controller="Account" asp-action="Login">Log in</a></li>
+				
+				</ul>
+			</div>
+		</div>
+	</nav> 
+
+
     <div class="container body-content">
 		<div class="row">
         @RenderBody()
@@ -15,3 +29,5 @@
     </div>
 </body>
 </html>
+
+
