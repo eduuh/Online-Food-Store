@@ -4,7 +4,7 @@
 	padding-bottom: 20px;
 	background-color: black;
 	background-image: url("/images/pattern.jpg");
-	background-repeat: repeat;
+	background-repeat: repeat-x;
 }
 
 .body-content {
@@ -15,3 +15,7 @@
 form {
 	margin-top:50px;
 }
+
+
+
+

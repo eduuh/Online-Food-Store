@@ -15,22 +15,27 @@ namespace PieShop.Controllers
         private readonly SignInManager<IdentityUser> _signInmanager;
         private readonly UserManager<IdentityUser> _usermanager;
 
-        public AccountController(SignInManager<IdentityUser> signInmanager, UserManager<IdentityUser> identityuser)
+        public AccountController(SignInManager<IdentityUser> signInmanager, UserManager<IdentityUser> usermanger)
         {
             _signInmanager = signInmanager;
-            _usermanager = identityuser;
+            _usermanager = usermanger;
         }
         // GET: /<controller>/
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
-
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -54,11 +59,7 @@ namespace PieShop.Controllers
                 
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
+       [HttpPost] 
         public async Task<IActionResult> Register(LoginViewModel loginViewModel)
         {
             if (ModelState.IsValid)
