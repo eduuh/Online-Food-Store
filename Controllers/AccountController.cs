@@ -20,21 +20,40 @@ namespace PieShop.Controllers
             _signInmanager = signInmanager;
             _usermanager = usermanger;
         }
-        // GET: /<controller>/
-        [HttpGet]
-        public IActionResult Index()
+    
+
+        public IActionResult Signup()
         {
             return View();
         }
-        [HttpGet]
+
+
+        [HttpPost]
+        public async Task<IActionResult> Signup(RegisterViewModel registerviewmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser()
+                {
+                    UserName = registerviewmodel.Username
+                };
+                var result = await _usermanager.CreateAsync
+                    (user, registerviewmodel.PassWord);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View(registerviewmodel);
+        }
+
+
         public IActionResult Login()
         {
             return View();
         }
-        public IActionResult Register()
-        {
-            return View();
-        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
@@ -56,30 +75,10 @@ namespace PieShop.Controllers
 
             ModelState.AddModelError("", "User name/password not found");
             return View(loginViewModel);
-                
+
         }
 
-       [HttpPost] 
-        public async Task<IActionResult> Register(LoginViewModel loginViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new IdentityUser()
-                {
-                    UserName = loginViewModel.UserName
-                };
-                var result = await _usermanager.CreateAsync
-                    (user, loginViewModel.Password);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-            return View(loginViewModel);
-        }
-
-       [HttpPost]
+        [HttpPost]
        public async Task<IActionResult> Logout()
         {
             await _signInmanager.SignOutAsync();
