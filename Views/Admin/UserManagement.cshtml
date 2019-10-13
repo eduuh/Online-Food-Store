@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+@model IEnumerable<IdentityUser>
+<br/> <br/><br/>
+<br/> <br/><br/>
+<br/> <br/><br/>
+<h2>User Management</h2>
+@if (!Model.Any())
+{
+	<tr><td colspan="3" class ="text-center">No User Accounts</td></tr>
+}
+else
+{
+	<table class="table table-striped">
+		<thead class="thead-dark">
+		<tr>
+			<th scope="col">User Id</th>
+			<th scope="col">User name</th>
+			<th scope="col">Email</th>
+		</tr>
+		</thead>
+		@foreach (IdentityUser user in Model)
+		{
+			<tbody>
+		<tr>
+			<td>@user.Id</td>
+			<td>@user.UserName</td>
+			<td>@user.Email</td>
+			<td>
+				<form asp-action="DeleteUser" asp-route-userId="@user.Id" method="post">
+					<a class="btn btn-sm btn-primary" asp-action="EditUser" asp-route-id="@user.Id">
+						Edit
+					</a>
+					<button type="submit" onclick="return confirm('Are you sure you want to delete the user')" class="btn btn-primary">Delete</button>
+				</form>
+			</td>
+		</tr>
+		</tbody>
+		}
+	</table>
+}
+
+<a class="btn btn-primary" asp-action="AddUser">Add New user </a>
