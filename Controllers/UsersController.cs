@@ -39,7 +39,7 @@ namespace PieShop.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<IActionResult> Post(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
