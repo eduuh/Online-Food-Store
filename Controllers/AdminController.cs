@@ -8,22 +8,52 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using PieShop.ViewModels;
+using Remotion.Linq.Utilities;
 
 namespace PieShop.Controllers
-{
-        [Authorize]
+{ 
+    [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
         private UserManager<IdentityUser> _userManager;
+        private  RoleManager<IdentityUser> _roleManager;
 
-        public AdminController(UserManager<IdentityUser> userManager)
+        public AdminController(UserManager<IdentityUser> userManager,RoleManager<IdentityUser> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         } 
         [HttpGet]
         public IActionResult AddUser()
         {
             return View();
+        }
+
+        public IActionResult RoleManagement()
+        {
+            var roles = _roleManager.Roles;
+            return View(roles);
+        }
+
+        public IActionResult AddNewRole() => View();
+        [HttpPost]
+        public async Task<IActionResult> AddNewRole (AddRoleViewModel addrole)
+        {
+            if (!ModelState.IsValid) return View(addrole);
+
+            var newRole = new IdentityRole(){
+            Name = addrole.RoleName};
+
+
+            var result = await _roleManager.CreateAsync(newRole);
+            if (result.Succeeded)
+                return RedirectToAction("RoleManagement", _roleManager.Roles);
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("",error.Description);
+            }
+
+
         }
 
         [HttpPost]
