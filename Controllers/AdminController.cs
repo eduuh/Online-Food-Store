@@ -12,8 +12,7 @@ using Remotion.Linq.Utilities;
 
 namespace PieShop.Controllers
 {
-  [Authorize(Roles = "Administrators")]
-  [Authorize(Roles = "someotherroles")]
+//  [Authorize(Roles = "Administrators")]
   public class AdminController : Controller
   {
     private UserManager<IdentityUser> _userManager;
