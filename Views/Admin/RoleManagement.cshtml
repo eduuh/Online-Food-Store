@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
-
 @model IEnumerable<IdentityRole>
 
 <h2>Role Management</h2>
@@ -14,7 +13,6 @@ else
 		<tr>
 			<th>Role Id</th>
 			<th>Role Name</th>
-			<th>#Users</th>
 		</tr>
 		@foreach (var role in Model)
 		{
