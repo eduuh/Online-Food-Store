@@ -1,0 +1,43 @@
+@model EditRoleViewModel
+
+<h2>Edit role</h2>
+
+<form asp-action="AddNewRole" asp-controller="Admin" method="post" class="form-horizontal">
+	<h4>Enter the role details below</h4>
+	<div asp-validation-summary="All" class="text-danger"></div>
+
+	<div class="form-group">
+		<label asp-for="RoleName" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="RoleName" class="form-control"/>
+			<span asp-validation-for="RoleName" class="text-danger"></span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="RoleDescription" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="RoleDescription" class="form-control"/>
+			<span asp-validation-for="RoleDescription" class="text-danger"></span>
+		</div>
+	</div>
+	<br/>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-5">
+			<input type="submit" class="btn btn-primary" value="Log In"/>
+		</div>
+	</div>
+
+</form>
+
+<h3>users in this role</h3>
+<ul>
+  @foreach (var user in Model.Users)
+  {
+   <li>
+     @user
+   </li>   
+  }
+</ul>
+<a asp-action="AddUserToRole" asp-route-roleId="@Model.Id" class ="btn btn-primary">Add user</a>
+<a asp-action="DeleteUserFromRole" asp-route-roleId="@Model.Id" class="btn btn-primary">Delete user</a>
